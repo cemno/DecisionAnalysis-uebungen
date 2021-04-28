@@ -182,15 +182,17 @@ ggplot(data = melted_cormat,
            fill = value)) + 
   geom_tile()
 
-mpg_wide = reshape2::melt(select(mpg, c("displ", "year", "cyl", "cty", "hwy")), "year")
+mpg_wide <- reshape2::melt(select(
+  rename(mpg, "City" = cty, "Highway" = hwy), c("year", "City", "Highway")), "year")
+
+png(file = "cars_efficiency.png", width = 7, height = 6, units = "in", res = 300)
 
 ggplot(data = mpg_wide, aes(x = as.factor(year)))+
-  geom_col(aes(y = value, fill = variable), position = "dodge")
+  geom_col(aes(y = value, fill = variable), position = "dodge")+
+  xlab("Year")+
+  ylab("Miles per gallon")+
+  labs(fill = "Environment")+
+  ggtitle("Efficiency of Cars from 1999 and 2008")
   
-
-png(file = "cortile.png", width = 7, height = 6, units = "in", res = 300)
-
-ggplot(data = melted_cormat, aes(x = Var1, y = Var2, fill = value)) + geom_tile() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
 dev.off()
 
