@@ -48,7 +48,7 @@ for i in x:
 ```
 
 
-## Including Plots
+## Including Plot
 
 You can also embed plots, for example:
 
