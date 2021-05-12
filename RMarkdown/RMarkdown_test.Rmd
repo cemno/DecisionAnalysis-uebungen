@@ -19,6 +19,27 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
+### One can also use syntax to modify the text
+#### This is going to be a ~~great~~ Document.
+Here are some few basic Syntax commands to easily structure your markdown document:
+- There is the asterisk, which can be used to create
+  - **\*\*bold text\*\*** or
+  - *\*italicized text\** or even
+  - ***\*\*\*both!\*\*\****
+- One can also add a blockquote
+
+    > \> Blockquote
+
+- Or even code
+
+        for joke in this:
+          print(repr(joke) + " not funny.")
+
+- Oh and we can also highlight code in text so we see that `joke` was a variable.
+
+Thank you for reading. :heart:
+
+
 ##  Python test
 ```{python}
 x = [1,2,3,4]
