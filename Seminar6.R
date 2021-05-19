@@ -1,7 +1,6 @@
 library(decisionSupport)
 library(tidyverse)
 library(DiagrammeR)
-library(parallel)
 
 # Adding Management costs, adjusting linkStyle to 4 (for new link)
 mermaid("graph LR
