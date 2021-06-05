@@ -53,11 +53,10 @@ model_function <- function(){
   # Generate the list of outputs from the Monte Carlo simulation
   return(list(final_result = final_result))
 }
-parallel::cluster()
 # Run the Monte Carlo simulation using the model function
 chile_mc_simulation <- mcSimulation(estimate = as.estimate(input_estimates),
                                     model_function = model_function,
-                                    numberOfModelRuns = 1000000,
+                                    numberOfModelRuns = 10000,
                                     functionSyntax = "plainNames")
 
 # Print MonteCarlo simulation output
@@ -81,5 +80,5 @@ for(i in colnames(x)) assign(i,
 # Creating random global variable from input_estimates
 make_variables(as.estimate(input_estimates))
 
-# Call function (without parameters as they are in the global enviroment)
+# Call function (without parameters as they are in the global environment)
 model_function()
