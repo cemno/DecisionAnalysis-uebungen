@@ -90,24 +90,17 @@ hail_estimates[hail_estimates$variable=="initial_investment", c(2,4)]
 library(microbenchmark)
 set.seed(1234)
 x <- x <- c(0, 0, 20, 40, 80, 90)
-x <- ifelse(x < 10, 10, x)
-x <- ifelse(x > 55, 55, x)
-for (i in 1:length(x)){
-  if ((x[i]) < 10){
-    x[i] <- 10
-  }
-  if (x[i] > 55){
-    x[i] <- 55
-  }
-}
-x
-x
 microbenchmark(times = 1000,
+  filter = {
+    x[x < 10] <- 10
+    x[x > 55] <- 55
+    x
+  },
   ifelse = {
     x <- ifelse(x < 10, 10, x)
     x <- ifelse(x > 55, 55, x)
     x
-}, 
+  },
   for_loop = {
     for (i in 1:length(x)){
       if ((x[i]) < 10){
@@ -118,8 +111,5 @@ microbenchmark(times = 1000,
       }
     }
     x
-  
 }
-
 )
-
